@@ -1,0 +1,10 @@
+Bare-bones Blogger Template
+
+A starting point for creating stripped-down Blogger templates, without needing to deal with Blogger's Template Designer/wizard and without (well, almost) the ugly template source code. Just add your own HTML markup + CSS and you're good to go (I might throw in a sample in the furture).
+
+Also includes my tweaked version of the archive widget that is provided by Blogger, configured to display all posts on a separate archive page (be sure to create an empty page called archive).
+
+Further reading:
+
+http://templateofdoom.synthful.org/
+http://www.google.com/support/blogger/bin/answer.py?hl=en&answer=46870

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><data:blog.pageTitle/></title>
+
+    <b:skin><![CDATA[]]></b:skin>
+
+  </head>
+  <body>
+
+    <b:section id='blog'>
+
+
+      <b:widget id='BlogArchive1' locked='false' title='Blog Archive' type='BlogArchive'>
+
+        <b:includable id='main'>
+          <b:if cond='data:blog.url == data:blog.homepageUrl + "p/archive.html"'>
+            <ul><b:include data='data' name='interval'/></ul>
+          </b:if>
+        </b:includable>
+
+        <b:includable id='interval' var='intervalData'>
+          <b:loop values='data:intervalData' var='i'>
+            <b:if cond='data:i.data'>
+              <b:include data='i.data' name='interval'/>
+            </b:if>
+            <b:if cond='data:i.posts'>
+              <b:loop values='data:i.posts' var='x'>
+                <li><a expr:href='data:x.url'><data:x.title/></a></li>
+              </b:loop>
+            </b:if>
+          </b:loop>
+        </b:includable>
+        
+
+        <b:includable id='toggle' var='interval'/>
+        <b:includable id='menu' var='data'/>
+        <b:includable id='flat' var='data'/>
+        <b:includable id='posts' var='posts'/>
+
+
+      </b:widget>
+
+
+      <b:widget id='Blog1' locked='false' title='Blog Posts' type='Blog'>
+
+        <b:includable id='main' var='post'>
+          <b:include name='Postings'/>
+          <b:include name='nextprev'/>
+        </b:includable>
+
+        <b:includable id='Postings'>
+          <b:loop values='data:posts' var='post'>
+            <a expr:href='data:post.url'><data:post.title/></a>
+            <data:post.dateHeader/>
+            <b:include data='post' name='labels'/>
+            <data:post.body/>
+          </b:loop>
+        </b:includable>
+
+        <b:includable id='labels' var='post'>
+          <b:if cond='data:post.labels'>
+            Labels: 
+            <b:loop values='data:post.labels' var='label'>
+              <a expr:href='data:label.url' rel='tag'><data:label.name/></a>
+              <b:if cond='data:label.isLast != &quot;true&quot;'>, </b:if>
+            </b:loop>
+          </b:if>
+        </b:includable>
+
+        <b:includable id='nextprev'>
+          <b:if cond='data:olderPageUrl'>
+            <a expr:href='data:olderPageUrl'><data:olderPageTitle/></a>
+          </b:if>
+          <b:if cond='data:blog.pageType != &quot;index&quot;'>
+            <a href='/'>Home</a>
+          </b:if>
+          <b:if cond='data:newerPageUrl'>
+            <a expr:href='data:newerPageUrl'><data:newerPageTitle/></a>
+          </b:if>
+        </b:includable>
+
+
+        <b:includable id='shareButtons'/>
+        <b:includable id='backlinks'/>
+        <b:includable id='status-message'/>
+        <b:includable id='comment-form'/>
+        <b:includable id='backlinkDeleteIcon'/>
+        <b:includable id='mobile-nextprev'/>
+        <b:includable id='postQuickEdit'/>
+        <b:includable id='commentDeleteIcon'/>
+        <b:includable id='feedLinks'/>
+        <b:includable id='mobile-index-post'/>
+        <b:includable id='feedLinksBody'/>
+        <b:includable id='comments' var='post'/>
+
+
+      </b:widget>
+      
+      
+    </b:section>
+
+  </body>
+</html>
